@@ -15,22 +15,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.*
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -39,7 +32,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carterinha_digital_senai.ui.theme.CarterinhadigitalsenaiTheme
-import qrcode.QRCode
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,7 +92,7 @@ fun Centro() {
         modifier = Modifier.height(600.dp)
     ){
         Text(
-            "Eric Souza dos Santos",
+            "Gabriel Galhiardo Farina",
             textAlign = TextAlign.Center,
             fontSize = 30.sp,
             color = Color(0xFFFFFFFF),
@@ -172,30 +164,6 @@ fun Texto(texto: String){
             fontFamily = FontFamily.Serif,
 
 
-        )
-    }
-}
-
-fun generateQrCodePng(content: String): ByteArray {
-    return QRCode(content).render()
-}
-
-@Composable
-fun QrCodeDisplayModern(content: String) {
-    val qrCodeBytes by remember(content) {
-        mutableStateOf(generateQrCodePng(content))
-    }
-
-    val bitmap: ImageBitmap? = remember(qrCodeBytes) {
-        qrCodeBytes?.let {
-            BitmapFactory.decodeByteArray(it, 0, it.size).asImageBitmap()
-        }
-    }
-
-    bitmap?.let {
-        Image(
-            bitmap = it,
-            contentDescription = "90000000001445852743"
         )
     }
 }
